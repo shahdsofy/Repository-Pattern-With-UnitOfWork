@@ -123,7 +123,7 @@ IEnumerable<T> Find(Expression<Func<T, bool>> criteria);
 * Pagination
 * Tracking / No Tracking
   
-* ```csharp
+ ```csharp
 
   IEnumerable<T> Find(Expression<Func<T, bool>>? match,
        int PageNumber,
@@ -163,8 +163,8 @@ public class UnitOfWork : IUnitOfWork
         Books=new BookRepository(context);
         Authors=new AuthorRepository(context);
     }
-    IBookRepository Books { get; }
-    IAuthorRepository Authors { get; }
+    public IBookRepository Books { get; }
+    public IAuthorRepository Authors { get; }
 
     public int Complete()
     {
@@ -200,7 +200,7 @@ public class UnitOfWork : IUnitOfWork
 مثال:
 
 ```csharp
-Movie GetbookWithAuthor(int id);
+Book GetbookWithAuthor(int id);
 ```
 
 🎯 الهدف: تخصيص Repository حسب الحاجة.
