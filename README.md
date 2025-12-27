@@ -147,8 +147,8 @@ IEnumerable<T> Find(Expression<Func<T, bool>> criteria);
 ```csharp
 public interface IUnitOfWork : IDisposable
 {
-    IGenreRepository Genres { get; }
-    IMovieRepository Movies { get; }
+    IBookRepository Books { get; }
+    IAuthorRepository Authors { get; }
     int Complete();
 }
 
@@ -160,12 +160,11 @@ public class UnitOfWork : IUnitOfWork
     {
         this.context = context;
 
-        Genres=new GenreRepository(context);
-        Movies=new MovieRepository(context);
+        Books=new BookRepository(context);
+        Authors=new AuthorRepository(context);
     }
-    public IGenreRepository Genres  { get; }
-
-    public IMovieRepository Movies { get; }
+    IBookRepository Books { get; }
+    IAuthorRepository Authors { get; }
 
     public int Complete()
     {
@@ -201,7 +200,7 @@ public class UnitOfWork : IUnitOfWork
 مثال:
 
 ```csharp
-Movie GetMovieWithGenre(int id);
+Movie GetbookWithAuthor(int id);
 ```
 
 🎯 الهدف: تخصيص Repository حسب الحاجة.
